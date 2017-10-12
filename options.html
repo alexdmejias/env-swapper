@@ -4,12 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Environment Swapper Options</title>
+    <style>
+        body {
+            width: 500px;
+        }
+        textarea {
+            min-height: 300px;
+            width: 100%;
+        }
+        #help {
+            position: absolute;
+            margin: 1%;
+            padding: 6px 10px;
+            border-radius: 100%;
+            border: 2px solid blue;
+            color: blue;
+            top: 0;
+            right: 0;
+            background: white;
+            font-weight: bold;
+        }
+        .message {
+            display: none;
+        }
+        #help:hover .message {
+            display: block;
+            position: absolute;
+            top: 33%;
+            right: 44%;
+            background: beige;
+            padding: 10px;
+            min-width: 250px;
+            color: black;
+            font-weight: normal;
+            box-shadow: rgba(0,0,0,0.5) 0 0 1px 2px;
+        }
+        i {
+            font-size: .8em;
+        }
+
+        #error {
+            font-weight: bold;
+            display: inline-block;
+            color: green;
+            background-color: rgba(0, 255, 0, .1);
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #error.active {
+            color: red;
+            background-color: rgba(255, 0, 0, .1);
+        }
+        #error:empty {
+            display: none;
+        }
+    </style>
+    <script src="jsonlint.min.js"></script>
 </head>
 <body>
+    <div id="help">?
+        <div class="message">
+            Sample Config Below:<br>
+            <i>Everything before the needle will be replaced with the chosen environment.</i>
+            <pre>
+[{
+    "name": "{Project Name}",
+    "needle": "{needle}",
+    "urls": [{
+        "name": "{name of environment}",
+        "url": "{url segment}"
+    }, {
+        "name": "{name of environment}",
+        "url": "{url segment}"
+    },{
+        "name": "{name of environment}",
+        "url": "{url segment}"
+    }, {
+        "name": "{name of environment}",
+        "url": "{url segment}"
+    }, {...}]
+}, {...}]
+</pre>
+        </div>
+    </div>
     <textarea id="textarea" /></textarea>
-
     <button id="save-options">Save!</button>
+    <pre id="error"></pre>
 
     <script src="options.js"></script>
 </body>
